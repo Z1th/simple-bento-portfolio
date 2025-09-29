@@ -1,0 +1,79 @@
+---
+import "@fontsource-variable/baloo-2";
+import "@fontsource/poppins";
+import "../../styles/global.css";
+import { getCollection } from "astro:content";
+import ArticleInfo from "../../components/blog/ArticleInfo/ArticleInfo.astro";
+import SocialMedia from "../../components/views/profile/social-media/SocialMedia.astro";
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection("blog");
+
+  return blogPosts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const profileInformation = await getCollection("profileInformation");
+const profile = profileInformation[0];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="ZithCode">
+    <meta name="description" content={post.data.description} />
+    <meta name="keywords" content={post.data.keywords.join(", ")} />
+    
+    <meta property="og:title" content={post.data.title} />
+    <meta property="og:description" content={post.data.description} />
+    <meta property="og:image" content={post.data.image} />
+    <meta property="og:type" content="article" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={post.data.title} />
+    <meta name="twitter:description" content={post.data.description} />
+    <meta name="twitter:image" content={post.data.image} />
+    
+    <title>{post.data.title}</title>
+  </head>
+
+  <body>
+    <div class="w-full min-h-screen flex justify-center px-5 md:px-0 py-5">
+      <div class="w-full md:w-1/2">
+        <div class="w-full h-40 md:h-64">
+          <img
+            class="w-full h-full object-cover rounded-md"
+            src={post.data.image}
+          />
+        </div>
+
+        <ArticleInfo
+          author={post.data.author}
+          date={post.data.date}
+          readTime={post.data.readTime}
+          profileAuthorImage={post.data.profileAuthorImage}
+        />
+
+        <div class="prose prose-lg font-poppins max-w-none">
+          <Content />
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+          <p class="text-sm font-semibold font-poppins mb-3">Connect with me:</p>
+          <SocialMedia socialMedia={profile.data.socialMedia} />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

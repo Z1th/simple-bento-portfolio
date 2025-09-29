@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --font-baloo: 'Baloo 2 Variable', 'sans-serif';
+  --font-poppins: 'Poppins', 'sans-serif';
+  --font-cbyg: 'Covered By Your Grace', 'san-serif';
+}
+
+.font-baloo {
+  font-family: var(--font-baloo);
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+.swiper-pagination-bullet {
+  @apply !w-8 !h-1 !rounded-sm !bg-white/50;
+}
+
+.swiper-pagination-bullet-active {
+  @apply !bg-white;
+}
+
+.swiper-pagination-skills .swiper-pagination-bullet {
+  @apply !bg-gray-800;
+}
+
+.swiper-pagination-skills .swiper-pagination-bullet-active {
+  @apply !bg-black;
+}
+
+
+.prose h1 {
+  @apply text-4xl font-bold font-baloo mb-6 mt-6;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold font-baloo mb-4 mt-6;
+}
+
+.prose h3 {
+  @apply text-xl font-medium font-baloo mb-3 mt-5;
+}
+
+.prose p {
+  @apply text-base font-poppins leading-relaxed mb-4;
+}
+
+.prose code {
+  @apply bg-none px-2 py-1 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-gray-900 text-white p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.prose ul, .prose ol {
+  @apply mb-4 pl-6;
+}
+
+.prose li {
+  @apply mb-2 font-poppins;
+}
+
+.prose img {
+  @apply rounded-md;
+}

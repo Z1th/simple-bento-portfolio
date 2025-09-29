@@ -1,0 +1,66 @@
+---
+import "../../styles/global.css";
+import ProfileView from "../views/profile/ProfileView.astro";
+import ProjectsView from "../views/projects/ProjectsView.astro";
+import BlogView from "../views/blog/BlogView.astro";
+import ContactView from "../views/contact/ContactView.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+const allPosts = await getCollection("blog");
+const blogPosts = allPosts
+  .filter((post: CollectionEntry<"blog">) => !post.data.draft)
+  .sort(
+    (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+      new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  )
+  .slice(0, 3)
+  .map((post: CollectionEntry<"blog">) => ({
+    title: post.data.title,
+    description: post.data.description,
+    date: post.data.date,
+    author: post.data.author,
+    tag: post.data.tag,
+    image: post.data.image,
+    draft: post.data.draft,
+    profileAuthorImage: post.data.profileAuthorImage,
+    readTime: post.data.readTime,
+    slug: post.slug,
+  }));
+---
+
+  <ProfileView blogPosts={blogPosts}/>
+  <ProjectsView />
+  <BlogView />
+  <ContactView />
+
+
+<script>
+  declare global {
+    interface Window {
+      switchTab: (tab: string) => void;
+    }
+  }
+
+
+  window.switchTab = function (tab: string) {
+    const contents = [
+      "profile-content",
+      "projects-content",
+      "blog-content",
+      "contact-content",
+    ];
+
+    contents.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        if (id === tab + "-content") {
+          element.classList.remove("hidden");
+        } else {
+          element.classList.add("hidden");
+        }
+      }
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>

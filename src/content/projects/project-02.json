@@ -1,0 +1,33 @@
+    {
+        "title": "Portafolio Astro",
+        "technologies": [
+            {
+                "name": "Astro",
+                "iconName": "logos:astro-icon"
+            },
+            {
+                "name": "Tailwind",
+                "iconName": "logos:tailwindcss-icon"
+            },
+            {
+                "name": "Kubernetes",
+                "iconName": "logos:kubernetes"
+            }
+        ],
+        "category": "web",
+        "githubUrl": "https://github.com/Z1th",
+        "gallery": [
+            {
+                "alt": "View of project",
+                "routeImage": "/projects/project-01/cover-01.png"
+            },
+            {
+                "alt": "View of project 2",
+                "routeImage": "/projects/project-01/cover-02.png"
+            },
+            {
+                "alt": "View of project 3",
+                "routeImage": "/projects/project-01/cover-03.jpg"
+            }
+        ]
+    }

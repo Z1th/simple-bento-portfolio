@@ -1,0 +1,69 @@
+---
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  title: string;
+  technologies: Array<{
+    name: string;
+    iconName: string;
+  }>;
+  category?: string;
+  githubUrl: string;
+  gallery?: Array<{
+    alt: string;
+    routeImage: string;
+  }>;
+}
+
+const { title, technologies, category, githubUrl, gallery = [] } = Astro.props;
+---
+
+<div class="flex flex-col h-56 rounded-xl relative">
+  <a class="absolute top-2 right-2 z-10 bg-black rounded-full p-1" href={githubUrl} target="_blank">
+    <Icon name="mdi:github" class="w-6 h-6 text-white" />
+  </a>
+  
+  <div class="swiper-card h-full rounded-xl relative overflow-hidden">
+    <div class="swiper-wrapper">
+      {gallery.map((image) =>(
+         <div class="swiper-slide">
+        <img class="h-full w-full object-cover rounded-xl opacity-70" src={image.routeImage} />
+      </div>
+      ))}
+    </div>
+    <div class="swiper-button-prev !absolute !bottom-2 !right-10 !top-auto !left-auto !w-6 !h-6 !bg-black !rounded-full after:!text-xs after:!text-white !z-30"></div>
+    <div class="swiper-button-next !absolute !bottom-2 !right-2 !top-auto !left-auto !w-6 !h-6 !bg-black !rounded-full after:!text-xs after:!text-white !z-30"></div>
+  </div>
+  
+  <div class="flex flex-col w-full p-2 absolute bottom-2 gap-y-3 pointer-events-none z-20">
+     <a href={githubUrl} class="hover:underline decoration-white pointer-events-auto" target="_BLANK">
+      <p class="text-sm text-white font-semibold font-poppins">
+        {title}
+      </p>
+    </a>
+
+    <div class="flex flex-wrap gap-3 w-3/4">
+      {technologies.map((tech) => (
+        <Icon name={tech.iconName} class="w-6 h-6 text-white bg-white p-1 rounded-full" />
+      ))}
+    </div>
+  </div>
+  
+  <div class="w-full h-full rounded-xl absolute bg-gradient-to-t from-gray-900 to-transparent pointer-events-none z-10"></div>
+</div>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation } from 'swiper/modules';
+
+  new Swiper('.swiper-card', {
+    modules: [Navigation],
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>

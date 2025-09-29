@@ -1,0 +1,35 @@
+---
+import "@fontsource-variable/baloo-2";
+import "../styles/global.css";
+import { Icon } from "astro-icon/components";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noindex" />
+    <title>Not Found | Simple Bento Portfolio</title>
+  </head>
+
+  <body class="min-h-screen">
+    <div class="p-4 w-full flex items-center justify-center min-h-screen">
+      <div class="w-full sm:w-2/5 flex flex-col items-center gap-4">
+        <h1 class="text-5xl font-semibold font-baloo">Oops!</h1>
+        <p class="text-lg text-center font-baloo">
+          We couldn't find the page you were looking for, but the main page is
+          safe. You might want to go back.
+        </p>
+        <a
+          href="/"
+          class="flex flex-row border-1 bg-black text-white rounded-full text-sm px-4 py-2 text-center opacity-100 transition-opacity duration-300 hover:opacity-60"
+        >
+          <Icon name="mdi:keyboard-arrow-left" class="w-6 h-6 text-white" />
+          <p>Go home</p>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

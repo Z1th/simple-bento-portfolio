@@ -1,0 +1,38 @@
+---
+import "swiper/css";
+import "swiper/css/navigation";
+import ViewContainer from "../../ui/ViewContainer.astro";
+import CardProject from "./CardProject.astro";
+import PageHeader from "../../ui/PageHeader.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+const projects = allProjects;
+---
+
+<ViewContainer id="projects-content" hidden={true}>
+  <div class="flex flex-col md:flex-row gap-6">
+    <div class="w-full flex flex-col gap-y-8 relative">
+      <PageHeader 
+        title="Projects" 
+        description="My digital workshop. Here's where I build, break, and tinker with things. A collection of my active experiments, finished websites, and maybe a few glorious failures. Take a look around"
+      />
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-0 md:px-3"
+      >
+        {
+          projects.map((project) => (
+            <CardProject
+              title={project.data.title}
+              technologies={project.data.technologies}
+              category={project.data.category}
+              githubUrl={project.data.githubUrl}
+              gallery={project.data.gallery}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</ViewContainer>

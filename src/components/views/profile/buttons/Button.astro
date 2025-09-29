@@ -1,0 +1,19 @@
+---
+import { Icon } from "astro-icon/components"
+
+export interface Props {
+  tab: string;
+  iconName: string;
+  buttonName: string;
+}
+
+const { tab, iconName, buttonName } = Astro.props;
+---
+
+<button
+  onclick={`window.switchTab('${tab}')`}
+  class="flex w-full rounded-md items-center justify-center gap-x-1 bg-black hover:bg-gray-800 transition-colors cursor-pointer"
+>
+  <Icon name={iconName} class="w-5 h-5 text-white" />
+  <p class="text-xs font-semibold font-poppins py-2 text-white">{buttonName}</p>
+</button>

@@ -1,0 +1,75 @@
+---
+import BlogCard from "./BlogCard.astro";
+import Subtitles from "../../../ui/Subtitle.astro";
+import "swiper/css";
+import "swiper/css/pagination";
+
+export interface Props {
+  posts: Array<{
+    title: string;
+    description: string;
+    date: Date;
+    author: string;
+    tag: string;
+    image?: string;
+    draft: boolean;
+    profileAuthorImage: Array<{
+      alt: string;
+      src: string;
+    }>;
+    readTime: string;
+    slug: string;
+  }>;
+}
+
+const { posts } = Astro.props;
+---
+
+<div
+  class="w-full h-80 flex flex-col gap-3 md:p-2 overflow-hidden sticky top-4"
+>
+  <Subtitles title="Latest Blog" />
+  <div class="swiper-blog h-full w-full overflow-hidden">
+    <div class="swiper-wrapper">
+      {
+        posts.map((post) => (
+          <div class="swiper-slide">
+            <BlogCard
+              title={post.title}
+              description={post.description}
+              category={post.tag}
+              image={post.image}
+              slug={post.slug}
+            />
+          </div>
+        ))
+      }
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<script>
+  import Swiper from "swiper";
+  import { Pagination } from "swiper/modules";
+
+  new Swiper(".swiper-blog", {
+    modules: [Pagination],
+    spaceBetween: 30,
+    slidesPerView: 1,
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 1,
+        spaceBetween: 30,
+      },
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>

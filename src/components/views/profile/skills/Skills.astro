@@ -1,0 +1,58 @@
+---
+import "swiper/css";
+import "swiper/css/pagination";
+import Subtitle from "../../../ui/Subtitle.astro";
+import SkillBox from "./SkillBox.astro";
+
+export interface Props {
+  stack: Array<{
+    name: string;
+    src: string;
+  }>;
+}
+
+const { stack } = Astro.props;
+---
+
+<div class="flex flex-col gap-4">
+  <Subtitle title="Skills" />
+  <div class="swiper-skills overflow-hidden relative pb-8">
+    <div class="swiper-wrapper">
+      {
+        Array.from({ length: Math.ceil(stack.length / 6) }).map(
+          (_, slideIndex) => (
+            <div class="swiper-slide">
+              <div class="grid grid-cols-3 gap-4 min-h-[120px]">
+                {stack
+                  .slice(slideIndex * 6, (slideIndex + 1) * 6)
+                  .map((skill) => (
+                    <SkillBox src={skill.src} name={skill.name} />
+                  ))}
+              </div>
+            </div>
+          )
+        )
+      }
+    </div>
+    <div class="swiper-pagination swiper-pagination-skills relative"></div>
+  </div>
+</div>
+
+<script>
+  import Swiper from "swiper";
+  import { Pagination, Autoplay } from "swiper/modules";
+
+  new Swiper(".swiper-skills", {
+    modules: [Pagination, Autoplay],
+    loop: true,
+    spaceBetween: 30,
+    slidesPerView: 1,
+    autoplay: {
+      delay: 3000,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>

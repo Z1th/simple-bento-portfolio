@@ -1,0 +1,26 @@
+---
+import Subtitles from "../../../ui/Subtitle.astro";
+import ExperienceBox from "./ExperienceBox.astro";
+
+export interface Props {
+  experiences: Array<{
+    company: string;
+    startDate: string;
+    endDate: string;
+    position: string;
+  }>;
+}
+
+const { experiences } = Astro.props;
+---
+
+<div class="flex flex-col gap-4">
+  <Subtitles title="Experience" />
+  {experiences.map((exp) => (
+    <ExperienceBox
+      dates={`${exp.startDate} - ${exp.endDate}`}
+      company={exp.company}
+      position={exp.position}
+    />
+  ))}
+</div>

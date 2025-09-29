@@ -1,0 +1,48 @@
+---
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+export interface Props {
+  gallery: Array<{
+    src: string;
+    alt: string;
+  }>;
+}
+
+const { gallery } = Astro.props;
+---
+
+<div class="w-auto h-72 md:h-96 flex justify-center overflow-hidden">
+  <div class="swiper-photos h-full w-64 relative">
+    <div class="swiper-wrapper h-full">
+      {gallery.map((photo) => (
+        <div class="swiper-slide h-full">
+          <img
+            class="h-full w-full object-cover rounded-3xl"
+            src={photo.src}
+            alt={photo.alt}
+          />
+        </div>
+      ))}
+    </div>
+    <div class="swiper-pagination !bottom-2"></div>
+  </div>
+</div>
+
+<script>
+  import Swiper from 'swiper';
+  import { Pagination, Autoplay } from 'swiper/modules';
+
+  new Swiper('.swiper-photos', {
+    modules: [Pagination, Autoplay],
+    loop: true,
+    spaceBetween: 30,
+    autoplay: {
+      delay: 3000,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>

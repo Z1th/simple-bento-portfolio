@@ -1,0 +1,40 @@
+---
+import ViewContainer from "../../ui/ViewContainer.astro";
+import PageHeader from "../../ui/PageHeader.astro";
+import BlogCard from "./BlogCard.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+const allPosts = await getCollection("blog");
+const blogPosts = allPosts
+  .filter((post: CollectionEntry<"blog">) => !post.data.draft)
+  .sort(
+    (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+      new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  );
+---
+
+<ViewContainer id="blog-content" hidden={true}>
+  <div class="flex flex-col md:flex-row gap-6">
+    <div class="w-full flex flex-col gap-y-8 relative">
+      <PageHeader title="Blog" description="My digital notebook. I write about building websites, cool tech I find, and lessons learned from my projects. Grab a coffee and explore some ideas with me." />
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-0 md:px-3"
+      >
+        {
+          blogPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              image={post.data.image || "/simple-blog.jpg"}
+              timeAgo={new Date(post.data.date).toLocaleDateString()}
+              readTime={post.data.readTime}
+              href={`/blog/${post.slug}`}
+              author={post.data.author}
+              profileAuthorImage={post.data.profileAuthorImage}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</ViewContainer>

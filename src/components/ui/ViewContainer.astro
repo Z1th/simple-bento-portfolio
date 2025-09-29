@@ -1,0 +1,23 @@
+---
+export interface Props {
+  id: string;
+  hidden?: boolean;
+}
+
+const { id, hidden = false } = Astro.props;
+---
+
+<div 
+  id={id}
+  class={`flex flex-col md:flex-row w-full md:h-3/4 lg:h-4/6 md:max-h-96 p-0 md:p-4 gap-8 items-center justify-center max-w-6xl mx-auto ${hidden ? 'hidden' : ''}`}
+>
+  <slot name="sidebar" />
+  
+  <div class="flex flex-col w-full md:w-4/5 md:h-full md:overflow-y-auto">
+    <div
+      class="flex-1 pb-5 md:overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-200 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300"
+    >
+      <slot />
+    </div>
+  </div>
+</div>

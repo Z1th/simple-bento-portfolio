@@ -1,0 +1,28 @@
+---
+import Subtitle from "../../../ui/Subtitle.astro";
+import EducationBox from "./EducationBox.astro";
+
+export interface Props {
+  education: Array<{
+    title: string;
+    startDate: string;
+    endDate: string;
+    grade: string;
+  }>;
+}
+
+const { education } = Astro.props;
+---
+
+<div class="flex flex-col gap-y-4">
+  <Subtitle title="Education" />
+  <div class="flex flex-col gap-3">
+    {education.map((edu) => (
+      <EducationBox
+        dates={`${edu.startDate} - ${edu.endDate}`}
+        university={edu.grade}
+        text={edu.title}
+      />
+    ))}
+  </div>
+</div>

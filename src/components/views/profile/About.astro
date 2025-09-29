@@ -1,0 +1,24 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  badge: {
+    src: string;
+    alt: string;
+  };
+}
+
+const { title, description, badge } = Astro.props;
+---
+
+<div class="flex flex-col gap-5 relative">
+   <img
+      src={badge.src}
+      class="absolute top-0 right-4 object-contain w-12"
+      alt={badge.alt}
+    />
+  <h1 class="text-5xl font-bold font-baloo w-3/4">{title}</h1>
+  <p class="text-xs font-poppins leading-relaxed">
+    {description}
+  </p>
+</div>

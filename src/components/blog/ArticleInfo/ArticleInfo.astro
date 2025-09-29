@@ -1,0 +1,50 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  author: string;
+  date: Date;
+  readTime: string;
+  profileAuthorImage: Array<{
+    alt: string;
+    src: string;
+  }>;
+}
+
+const { author, date, readTime, profileAuthorImage } = Astro.props;
+const formattedDate = new Date(date).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<div class="flex items-center gap-3 py-4 border-gray-200 mb-6 mt-6">
+  <a href="/" class="opacity-100 transition-opacity duration-300 hover:opacity-70">
+    <img
+      class="w-12 h-12 rounded-full object-cover "
+      src={profileAuthorImage[0]?.src}
+      alt={profileAuthorImage[0]?.alt}
+    />
+  </a>
+  <div class="flex flex-col">
+    <div class="flex items-center gap-x-2">
+      <a href="/" class="opacity-100 transition-opacity duration-300 hover:opacity-70">
+        <p class="font-semibold font-poppins text-gray-900">{author}</p>
+      </a>
+      <a
+        href="#"
+        target="_BLANK"
+        class="w-8 h-8 flex items-center justify-center rounded-full opacity-70 transition-opacity duration-300 bg-gray-200 hover:opacity-100"
+      >
+        <Icon name="devicon:linkedin" class="w-5 h-5 text-white" />
+      </a>
+    </div>
+
+    <div class="flex items-center gap-2 text-sm text-gray-600 font-poppins">
+      <span>{formattedDate}</span>
+      <span>•</span>
+      <span>{readTime}</span>
+    </div>
+  </div>
+</div>

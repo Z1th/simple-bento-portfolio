@@ -1,0 +1,26 @@
+---
+import Subtitles from "../../../ui/Subtitle.astro";
+import Button from "./Button.astro";
+---
+
+<div class="flex flex-col gap-4">
+  <Subtitles title="Keep Exploring" />
+
+  <div class="grid grid-cols-2 px-0 md:px-4 lg:px-0 md:grid-cols-3 gap-3">
+    <Button 
+      tab="projects" 
+      iconName="mdi:application-brackets-outline" 
+      buttonName="Projects" 
+    />
+    <Button 
+      tab="blog" 
+      iconName="mdi:note-text-outline" 
+      buttonName="Blog" 
+    />
+    <Button 
+      tab="contact" 
+      iconName="mdi:email-multiple-outline" 
+      buttonName="Contact" 
+    />
+  </div>
+</div>

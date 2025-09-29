@@ -1,0 +1,154 @@
+{
+  "title": "Hello there!",
+  "description": "I'm a Frontend Developer focused on creating modern web applications with clean code. I enjoy building responsive interfaces using React and TypeScript, always prioritizing performance and user experience in every project I work on.",
+  "gallery": [
+    {
+      "alt": "ZithCode Profile Photo",
+      "src": "/profile/profile-01.jpg"
+    },
+    {
+      "alt": "ZithCode Profile Photo 02",
+      "src": "/profile/profile-02.jpg"
+    },
+    {
+      "alt": "ZithCode Profile Photo 03",
+      "src": "/profile/profile-03.png"
+    }
+  ],
+  "badge": {
+    "alt": "ZithCode Logo",
+    "src": "/badge/zithcode_logo.png"
+  },
+  "education": [
+    {
+      "title": "Bachelor of Science in Computer Science",
+      "startDate": "2018",
+      "endDate": "2022",
+      "grade": "Stanford University"
+    },
+    {
+      "title": "Associate Degree in Web Development",
+      "startDate": "2016", 
+      "endDate": "2018",
+      "grade": "Community College of San Francisco"
+    },
+    {
+      "title": "Professional Cloud Architect Certification",
+      "startDate": "2023",
+      "endDate": "2023",
+      "grade": "Google Cloud Platform"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Google",
+      "startDate": "2015",
+      "endDate": "2017",
+      "position": "Frontend Developer"
+    },
+    {
+      "company": "Microsoft", 
+      "startDate": "2018",
+      "endDate": "2022",
+      "position": "Engineer in Computer Science"
+    },
+    {
+      "company": "Meta",
+      "startDate": "2022",
+      "endDate": "2024", 
+      "position": "Full Stack Developer"
+    }
+  ],
+  "stack": [
+    {
+      "name": "Photoshop",
+      "src": "devicon:photoshop"
+    },
+    {
+      "name": "Figma",
+      "src": "devicon:figma"
+    },
+    {
+      "name": "Javascript",
+      "src": "devicon:javascript"
+    },
+    {
+      "name": "Laravel",
+      "src": "devicon:laravel"
+    },
+    {
+      "name": "Git",
+      "src": "devicon:git"
+    },
+    {
+      "name": "Electron",
+      "src": "devicon:electron"
+    },
+    {
+      "name": "Node.js",
+      "src": "devicon:nodejs"
+    },
+    {
+      "name": "React",
+      "src": "devicon:react"
+    },
+    {
+      "name": "Vue.js",
+      "src": "devicon:vuejs"
+    },
+    {
+      "name": "Tailwind",
+      "src": "devicon:tailwindcss"
+    },
+    {
+      "name": "TypeScript",
+      "src": "devicon:typescript"
+    },
+    {
+      "name": "Python",
+      "src": "devicon:python"
+    },
+    {
+      "name": "Docker",
+      "src": "devicon:docker"
+    },
+    {
+      "name": "Kubernetes",
+      "src": "devicon:kubernetes"
+    },
+    {
+      "name": "MongoDB",
+      "src": "devicon:mongodb"
+    },
+    {
+      "name": "MySQL",
+      "src": "devicon:mysql"
+    },
+    {
+      "name": "Sass",
+      "src": "devicon:sass"
+    },
+    {
+      "name": "Next.js",
+      "src": "devicon:nextjs"
+    }
+  ],
+  "socialMedia": [
+    {
+      "nameIcon": "devicon:github",
+      "href": "https://github.com/Z1th"
+    },
+    {
+      "nameIcon": "devicon:linkedin",
+      "href": "https://www.linkedin.com/in/hermar-lopez/"
+    },
+    {
+      "nameIcon": "logos:youtube-icon",
+      "href": "https://youtube.com/zithcode"
+    },
+    {
+      "nameIcon": "logos:google-gmail",
+      "href": "mailto:contact@zithcode.com"
+    }
+  ]
+}

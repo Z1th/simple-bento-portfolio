@@ -1,0 +1,25 @@
+---
+import "@fontsource-variable/baloo-2";
+import "@fontsource/poppins";
+import "../styles/global.css";
+import Bento from "../components/layout/Bento.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="author" content="ZithCode">
+    <title>Simple Bento Portfolio</title>
+  </head>
+
+  <body>
+    <div
+      class="p-4 w-full flex items-center justify-center md:h-screen"
+    >
+      <Bento />
+    </div>
+  </body>
+</html>

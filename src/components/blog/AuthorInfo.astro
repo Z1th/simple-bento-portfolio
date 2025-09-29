@@ -1,0 +1,34 @@
+---
+export interface Props {
+  author: string;
+  date: Date;
+  readTime: string;
+  profileAuthorImage: Array<{
+    alt: string;
+    src: string;
+  }>;
+}
+
+const { author, date, readTime, profileAuthorImage } = Astro.props;
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<div class="flex items-center gap-3 py-4 border-b border-gray-200 mb-6">
+  <img 
+    class="w-12 h-12 rounded-full object-cover" 
+    src={profileAuthorImage[0]?.src} 
+    alt={profileAuthorImage[0]?.alt}
+  />
+  <div class="flex flex-col">
+    <p class="font-semibold font-poppins text-gray-900">{author}</p>
+    <div class="flex items-center gap-2 text-sm text-gray-600 font-poppins">
+      <span>{formattedDate}</span>
+      <span>•</span>
+      <span>{readTime}</span>
+    </div>
+  </div>
+</div>

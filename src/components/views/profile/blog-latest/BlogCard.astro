@@ -1,0 +1,45 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  category: string;
+  image?: string;
+  slug: string;
+}
+
+const { 
+  title, 
+  description, 
+  category, 
+  image = "/simple-blog.jpg", 
+  slug 
+} = Astro.props;
+
+const truncated = (text: string, maxLength: number) => 
+  text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
+
+const truncatedTitle = truncated(title, 50);
+---
+
+<a href={`/blog/${slug}`} target="_blank" class="w-full h-full cursor-pointer block">
+  <div class="relative w-full h-full rounded-xl overflow-hidden">
+    <img src={image} alt={title} class="w-full h-full object-cover" />
+
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
+    </div>
+
+    <div class="absolute top-5 left-5 z-10">
+      <div class="p-1.5 bg-purple-50 max-w-max rounded-lg">
+        <p class="text-xs font-semibold font-poppins text-purple-400">
+          {category}
+        </p>
+      </div>
+    </div>
+
+    <div class="absolute bottom-3 left-0 right-0 p-5 z-10">
+      <div class="flex flex-col gap-2">
+        <p class="font-poppins text-md font-bold text-white">{truncatedTitle}</p>
+      </div>
+    </div>
+  </div>
+</a>

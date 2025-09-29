@@ -1,0 +1,40 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  image: string;
+  timeAgo: string;
+  readTime: string;
+  href: string;
+  profileAuthorImage: Array<{
+    alt: string;
+    src: string;
+  }>;
+  author: string;
+}
+
+const { title, description, image, timeAgo, readTime, href, profileAuthorImage, author} = Astro.props;
+---
+
+<div class="flex flex-col h-fit rounded-xl gap-y-2 pb-2 overflow-hidden">
+  <a href={href} target="_BLANK">
+    <img class="h-32 w-full object-cover rounded-sm hover:opacity-90 transition-opacity" src={image} />
+  </a>
+
+  <div class="flex flex-col gap-y-2 h-2/5">
+    <a href={href} class="hover:underline" target="_BLANK">
+      <p class="text-sm text-black font-semibold font-poppins">
+        {title}
+      </p>
+    </a>
+    <p class="text-xs text-gray-900 font-poppins">{description}</p>
+    <div class="flex flex-row gap-x-1">
+        <img class="w-4 h-4 rounded-full object-cover" src={profileAuthorImage[0]?.src} alt={profileAuthorImage[0]?.alt}>
+        <p class="text-xs text-gray-500 font-poppins">{author}</p>
+        <span class="text-xs text-gray-400">•</span>
+        <p class="text-xs text-gray-500 font-poppins">{timeAgo}</p>
+        <span class="text-xs text-gray-400">•</span>
+        <p class="text-xs text-gray-500 font-poppins">{readTime}</p>
+    </div>
+  </div>
+</div>
