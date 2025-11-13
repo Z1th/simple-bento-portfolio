@@ -142,3 +142,14 @@ The Blog component renders the card with real data:
 This system demonstrates the power of Astro's Content Collections for creating dynamic, type-safe content systems. It's a perfect example of how modern web frameworks can automate repetitive tasks while maintaining performance and developer experience.
 
 The blog card you see in this portfolio is always up-to-date, thanks to this automated system that runs at build time. No databases, no complex APIs—just simple, efficient static generation.
+
+<div class="w-full aspect-video">
+  <iframe 
+    src="https://www.linkedin.com/embed/feed/update/urn:li:share:7378482062078640128?collapsed=1" 
+    class="w-full h-full" 
+    frameborder="0" 
+    sandbox="allow-scripts allow-same-origin" 
+    allowfullscreen 
+    title="Embedded post">
+  </iframe>
+</div>
